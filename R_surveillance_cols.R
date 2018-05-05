@@ -1,8 +1,8 @@
 #' Colour palettes following the latest surveillance guidelines 
 
 #' Function defaults to one green
-#' @param col_scale Selected colour scale, defaults to green
-#' @param n Number of colours from each colour scale, in preferred order. Defaults to one colour, max 7-8 colours for each scale. To select
+#' @param col_scale Selected colour scale, defaults to green. Select from 'green', 'blue', 'red', 'grey' or 'qualitative'.
+#' @param n Number of colours from each colour scale, in order indicated in the guidelines. Defaults to one colour, max 7-8 colours for each scale. To select
 #' grey shades, use the argument grey_shade.
 #' @param grey_shade Selected shade(s) of grey, use only for greyscale; overrides given number of colours (n).
 #' @keywords colourscales
