@@ -1,2 +1,2 @@
 # SurvColors
-Surveillance colour palettes following March 2018 guidelines. Currently contains green, blue, red and gray scales, and qualitative colours. Different scales combined by groups into lists, grayscale and qualitative colours as simple vectors.
+Surveillance colour palettes following March 2018 guidelines. Currently contains green, blue, red and gray scales, and qualitative colours. Function returns a vector of colours with defined length, which can be used directly in plots.
