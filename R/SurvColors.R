@@ -1,6 +1,5 @@
 #' Colour palettes following the latest March 2018 surveillance guidelines
-
-#' Function defaults to one green, use as a function or copy-paste the rgb values from within the function
+#'
 #' @param col_scale Selected colour scale, defaults to 'green'. Select from 'green', 'blue', 'red', 'grey' or 'qualitative'
 #' @param n Number of colours from each colour scale, apart from grey, in preferred order. Defaults to one colour, max 7-8 colours for each scale. To select
 #' grey shades, use the argument grey_shade instead.
