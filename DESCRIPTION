@@ -1,0 +1,10 @@
+Package: SurvColors
+Title: Colour palettes following the latest March 2018 surveillance guidelines
+Version: 0.0.0.9000
+Authors@R: person("Tommi", "Kärki", email = "tommi.p.karki@gmail.com", role = c("aut", "cre"))
+Description: Function to access and use colourscales from the March 2018 surveillance guidelines.
+Depends: R (>= 3.4.0)
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1
