@@ -9,22 +9,21 @@
 #' @export
 #' @examples
 #' # Select three first green colours
-#' survcolors("green", n=3)
+#' SurvColors("green", n=3)
 #' 
 #' # Select two first qualitative colours
-#' survcolors("qualitative", n=2)
+#' SurvColors("qualitative", n=2)
 #' 
-#' # Select only mediumlight and dark grey
-#' survcolors("grey", grey_shade = c("mediumlight", "dark"))
+#' SurvColors("grey", grey_shade = c("mediumlight", "dark"))
 #' 
 #' # Use in a graph
 #' # Dummy data
 #' mydat <- data.frame(ID = c(seq(1,10,1)),
 #' Gender = c(rep(c("F", "M"),5)))
 #' require(ggplot2)
-#' ggplot(mydat, aes(Gender)) + geom_bar(fill=survcolors("qualitative", n=2))
+#' ggplot(mydat, aes(Gender)) + geom_bar(fill=SurvColors("qualitative", n=2))
 
-survcolors <- function(col_scale="green", n=NULL, grey_shade = c("light", 
+SurvColors <- function(col_scale="green", n=NULL, grey_shade = c("light", 
                                                       "mediumlight",
                                                       "medium",
                                                       "mediumdark",
