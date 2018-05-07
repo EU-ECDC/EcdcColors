@@ -2,8 +2,7 @@
 % Please edit documentation in R/SurvColors.R
 \name{SurvColors}
 \alias{SurvColors}
-\title{Colour palettes following the latest March 2018 surveillance guidelines
-Function defaults to one green, use as a function or copy-paste the rgb values from within the function}
+\title{Colour palettes following the latest March 2018 surveillance guidelines}
 \usage{
 SurvColors(col_scale = "green", n = NULL, grey_shade = c("light",
   "mediumlight", "medium", "mediumdark", "dark"))
@@ -18,7 +17,6 @@ grey shades, use the argument grey_shade instead.}
 }
 \description{
 Colour palettes following the latest March 2018 surveillance guidelines
-Function defaults to one green, use as a function or copy-paste the rgb values from within the function
 }
 \examples{
 # Select three first green colours
