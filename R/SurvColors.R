@@ -140,11 +140,11 @@ if(col_scale=="green"){
                  rgb(63,63,63, maxColorValue = 255))
   cols <- cols[shades%in%grey_shade]
   
-  if(is.null(n)){
-    message("Greyzone -  If you want one gray, please insert the grey_shade: 'light'-'medium'-'dark'")
-  }else if(!is.null(n) & length(cols)!=n){
+  if(is.null(n) & length(grey_shade)>1){
+    message("Greyzone -  If you want one grey, please insert the grey_shade: 'light'-'mediumlight'-'medium'-'mediumdark'-'dark'")
+  }else if(!is.null(n)){
     message("Greyzone - number of colours (n) overridden by shades of grey. If you want
-            one gray, please insert the grey_shade: 'light'-'medium'-'dark'")
+            one grey, please insert the grey_shade: 'light'-'mediumlight'-'medium'-'mediumdark'-'dark'")
   }
 }else if(col_scale=="qualitative"){
 # qualitative colours
