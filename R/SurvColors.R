@@ -30,8 +30,6 @@ SurvColors <- function(col_scale="green", n=NULL, grey_shade = c("light",
 
 if(is.null(n) & col_scale != "grey"){
   n <- 1
-}else if(is.null(n) & col_scale == "grey"){
-  n <- length(grey_shade)
 }else{
   n <- n
 }
@@ -141,7 +139,10 @@ if(col_scale=="green"){
                  rgb(113,113,113, maxColorValue = 255),
                  rgb(63,63,63, maxColorValue = 255))
   cols <- cols[shades%in%grey_shade]
-  if(length(cols)!=n){
+  
+  if(is.null(n)){
+    message("Greyzone -  If you want one gray, please insert the grey_shade: 'light'-'medium'-'dark'")
+  }else if(!is.null(n) & length(cols)!=n){
     message("Greyzone - number of colours (n) overridden by shades of grey. If you want
             one gray, please insert the grey_shade: 'light'-'medium'-'dark'")
   }
