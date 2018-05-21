@@ -4,6 +4,7 @@
 #' @param n Number of colours from each colour scale, apart from grey, in preferred order. Defaults to one colour, max 7-8 colours for each scale. To select
 #' grey shades, use the argument grey_shade instead.
 #' @param grey_shade Selected shade(s) of grey, use only for greyscale; overrides given number of colours (n).
+#' @author Tommi Karki
 #' @keywords colourscales
 #' @export
 #' @examples
