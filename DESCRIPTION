@@ -1,8 +1,8 @@
 Package: SurvColors
-Title: What the Package Does (one line, title case)
+Title: Colours from the 2018 Surveillance Guidelines (one line, title case)
 Version: 0.0.0.9000
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Authors@R: person("Tommi", "Karki", email = "tommi.p.karki@gmail.com", role = c("aut", "cre"))
+Description: Colours from the 2018 Surveillance Guidelines.
 Depends: R (>= 3.4.0)
 License: What license is it under?
 Encoding: UTF-8
