@@ -141,7 +141,7 @@ if(col_scale=="green"){
                  rgb(63,63,63, maxColorValue = 255))
   cols <- cols[shades%in%grey_shade]
   
-  if(is.null(n) & length(grey_shade)>1){
+  if(is.null(n) & length(grey_shade)==5){
     message("Greyzone -  If you want one grey, please insert the grey_shade: 'light'-'mediumlight'-'medium'-'mediumdark'-'dark'")
   }else if(!is.null(n)){
     message("Greyzone - number of colours (n) overridden by shades of grey. If you want
