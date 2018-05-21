@@ -34,4 +34,7 @@ Gender = c(rep(c("F", "M"),5)))
 require(ggplot2)
 ggplot(mydat, aes(Gender)) + geom_bar(fill=SurvColors("qualitative", n=2))
 }
+\author{
+Tommi Karki
+}
 \keyword{colourscales}
