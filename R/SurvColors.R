@@ -142,10 +142,9 @@ if(col_scale=="green"){
   cols <- cols[shades%in%grey_shade]
   
   if(is.null(n) & length(grey_shade)==5){
-    message("Greyzone -  If you want one grey, please insert the grey_shade: 'light'-'mediumlight'-'medium'-'mediumdark'-'dark'")
+    message("Greyzone -  If you want one or more specific grey shades, please insert the grey_shade(s): c('light', 'mediumlight','medium','mediumdark','dark')")
   }else if(!is.null(n)){
-    message("Greyzone - number of colours (n) overridden by shades of grey. If you want
-            one grey, please insert the grey_shade: 'light'-'mediumlight'-'medium'-'mediumdark'-'dark'")
+    message("Greyzone - number of colours (n) overridden by shades of grey. If you want one or more specific grey shades, please insert the grey_shade(s): c('light', 'mediumlight','medium','mediumdark','dark')")
   }
 }else if(col_scale=="qualitative"){
 # qualitative colours
@@ -163,3 +162,5 @@ if(col_scale=="green"){
 }
 return(cols)
 }
+
+SurvColors()
