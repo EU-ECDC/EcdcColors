@@ -6,6 +6,7 @@
 #' @param grey_shade Selected shade(s) of grey, use only for greyscale; overrides given number of colours (n).
 #' @author Tommi Karki
 #' @keywords colourscales
+#' @importFrom "grDevices" "rgb"
 #' @export
 #' @examples
 #' # Select three first green colours
@@ -20,8 +21,7 @@
 #' # Dummy data
 #' mydat <- data.frame(ID = c(seq(1,10,1)),
 #' Gender = c(rep(c("F", "M"),5)))
-#' require(ggplot2)
-#' ggplot(mydat, aes(Gender)) + geom_bar(fill=SurvColors("qualitative", n=2))
+#' barplot(table(mydat$Gender), col = SurvColors(col_scale = "qual", n=2))
 SurvColors <- function(col_scale="green", n=NULL, grey_shade = c("light", 
                                                       "mediumlight",
                                                       "medium",
@@ -37,11 +37,12 @@ SurvColors <- function(col_scale="green", n=NULL, grey_shade = c("light",
     col_scale <- "qualitative"
   }
   
-  if(!is.null(n) & n>7 & col_scale != "qualitative"){
-    stop("Maximum number of colours for selected colour scale is 7!")
-  }else if(!is.null(n) & n>8 & col_scale == "qualitative"){
-    stop("Maximum number of colours for selected colour scale is 8!")
-  }
+  if(!is.null(n)){
+  if(n>7 & col_scale != "qualitative"){
+    stop("Maximum number of colours (n) for selected colour scale is 7!")
+  }else if(n>8 & col_scale == "qualitative"){
+    stop("Maximum number of colours (n) for selected colour scale is 8!")
+  }}
   
   if(col_scale=="green"){
 # greens
