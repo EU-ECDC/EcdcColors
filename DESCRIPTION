@@ -1,10 +1,11 @@
 Package: SurvColors
-Title: Colours from the 2018 Surveillance Guidelines (one line, title case)
+Title: Surveillance colors according to March 2018 Guidelines
 Version: 0.0.0.9000
-Authors@R: person("Tommi", "Karki", email = "tommi.p.karki@gmail.com", role = c("aut", "cre"))
-Description: Colours from the 2018 Surveillance Guidelines.
-Depends: R (>= 3.4.0)
-License: What license is it under?
+Authors@R: person("Tommi", "Karki", email = "tommi.karki@ecdc.europa.eu", role = c("aut", "cre"))
+Description: Surveillance colour palettes following March 2018 guidelines. Currently contains green, blue, red and grey scales, and qualitative colours. Function returns a vector of colours with defined length, which can be used directly in plots.
+Depends: R (>= 3.5.0)
+License: GPL (>= 2)
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1
+Imports: grDevices
