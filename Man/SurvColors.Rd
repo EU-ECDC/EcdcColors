@@ -8,7 +8,7 @@ SurvColors(col_scale = "green", n = NULL, grey_shade = c("light",
   "mediumlight", "medium", "mediumdark", "dark"))
 }
 \arguments{
-\item{col_scale}{Selected colour scale, defaults to 'green'. Select from 'green', 'blue', 'red', 'grey' or 'qualitative'}
+\item{col_scale}{Selected colour scale, defaults to 'green'. Select from 'green', 'blue', 'red', 'grey' or 'qual(itative)'}
 
 \item{n}{Number of colours from each colour scale, apart from grey, in preferred order. Defaults to one colour, max 7-8 colours for each scale. To select
 grey shades, use the argument grey_shade instead.}
@@ -23,7 +23,7 @@ Colour palettes following the latest March 2018 surveillance guidelines
 SurvColors("green", n=3)
 
 # Select two first qualitative colours
-SurvColors("qualitative", n=2)
+SurvColors("qual", n=2)
 
 SurvColors("grey", grey_shade = c("mediumlight", "dark"))
 
