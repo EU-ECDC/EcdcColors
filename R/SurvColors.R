@@ -1,6 +1,6 @@
 #' Colour palettes following the latest March 2018 surveillance guidelines
 #'
-#' @param col_scale Selected colour scale, defaults to 'green'. Select from 'green', 'blue', 'red', 'grey' or 'qualitative'
+#' @param col_scale Selected colour scale, defaults to 'green'. Select from 'green', 'blue', 'red', 'grey' or 'qual(itative)'
 #' @param n Number of colours from each colour scale, apart from grey, in preferred order. Defaults to one colour, max 7-8 colours for each scale. To select
 #' grey shades, use the argument grey_shade instead.
 #' @param grey_shade Selected shade(s) of grey, use only for greyscale; overrides given number of colours (n).
@@ -12,7 +12,7 @@
 #' SurvColors("green", n=3)
 #' 
 #' # Select two first qualitative colours
-#' SurvColors("qualitative", n=2)
+#' SurvColors("qual", n=2)
 #' 
 #' SurvColors("grey", grey_shade = c("mediumlight", "dark"))
 #' 
@@ -22,19 +22,28 @@
 #' Gender = c(rep(c("F", "M"),5)))
 #' require(ggplot2)
 #' ggplot(mydat, aes(Gender)) + geom_bar(fill=SurvColors("qualitative", n=2))
-
 SurvColors <- function(col_scale="green", n=NULL, grey_shade = c("light", 
                                                       "mediumlight",
                                                       "medium",
                                                       "mediumdark",
                                                       "dark")){
-
-if(is.null(n) & col_scale != "grey"){
+  if(is.null(n) & col_scale != "grey"){
   n <- 1
-}else{
+  }else{
   n <- n
-}
-if(col_scale=="green"){
+  }
+  
+  if(grepl("qual", col_scale)){
+    col_scale <- "qualitative"
+  }
+  
+  if(!is.null(n) & n>7 & col_scale != "qualitative"){
+    stop("Maximum number of colours for selected colour scale is 7!")
+  }else if(!is.null(n) & n>8 & col_scale == "qualitative"){
+    stop("Maximum number of colours for selected colour scale is 8!")
+  }
+  
+  if(col_scale=="green"){
 # greens
   gscale1 <- rgb(101,179,46, maxColorValue = 255)
   gscale2 <- c(rgb(32,119,50, maxColorValue = 255), 
@@ -158,9 +167,7 @@ if(col_scale=="green"){
                 rgb(184,26,93, maxColorValue = 255))
   cols <- cols[1:n]
 }else{
-  stop("col_scale is not among the currently defined colour palettes, please select from 'green', 'blue', 'red', 'grey' or 'qualitative'")
+  stop("col_scale is not among the currently defined colour palettes, please select from 'green', 'blue', 'red', 'grey' or 'qual(itative)'")
 }
-return(cols)
+  return(cols)
 }
-
-SurvColors()
