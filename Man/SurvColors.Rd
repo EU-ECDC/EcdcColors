@@ -31,8 +31,7 @@ SurvColors("grey", grey_shade = c("mediumlight", "dark"))
 # Dummy data
 mydat <- data.frame(ID = c(seq(1,10,1)),
 Gender = c(rep(c("F", "M"),5)))
-require(ggplot2)
-ggplot(mydat, aes(Gender)) + geom_bar(fill=SurvColors("qualitative", n=2))
+barplot(table(mydat$Gender), col = SurvColors(col_scale = "qual", n=2))
 }
 \author{
 Tommi Karki
