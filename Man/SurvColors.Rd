@@ -5,15 +5,17 @@
 \title{Colour palettes following the latest March 2018 surveillance guidelines}
 \usage{
 SurvColors(col_scale = "green", n = NULL, grey_shade = c("light",
-  "mediumlight", "medium", "mediumdark", "dark"))
+  "mediumlight", "medium", "mediumdark", "dark"), hot_cols = 1)
 }
 \arguments{
-\item{col_scale}{Selected colour scale, defaults to 'green'. Select from 'green', 'blue', 'red', 'grey' or 'qual(itative)'}
+\item{col_scale}{Selected colour scale, defaults to 'green'. Select from 'green', 'blue', 'red', 'grey', 'qual(itative)' or 'hotcold'}
 
 \item{n}{Number of colours from each colour scale, apart from grey, in preferred order. Defaults to one colour, max 7-8 colours for each scale. To select
 grey shades, use the argument grey_shade instead.}
 
 \item{grey_shade}{Selected shade(s) of grey, use only for greyscale; overrides given number of colours (n).}
+
+\item{hot_cols}{Selected number of hot (warm) colours in the hotcold colour scale, use only for hotcold; must be smaller than number of colours (n).}
 }
 \description{
 Colour palettes following the latest March 2018 surveillance guidelines
@@ -32,6 +34,9 @@ SurvColors("grey", grey_shade = c("mediumlight", "dark"))
 mydat <- data.frame(ID = c(seq(1,10,1)),
 Gender = c(rep(c("F", "M"),5)))
 barplot(table(mydat$Gender), col = SurvColors(col_scale = "qual", n=2))
+
+# Hot-cold colour scale
+barplot(c(1:4), col = SurvColors(col_scale = "hotcold", n = 4, hot_cols = 2))
 }
 \author{
 Tommi Karki
