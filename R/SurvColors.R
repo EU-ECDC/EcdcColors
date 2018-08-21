@@ -3,11 +3,12 @@
 #' Full document: European Centre for Disease Prevention and Control. Guidelines for presentation of surveillance data.
 #' Stockholm: ECDC; 2018. Available from: https://ecdc.europa.eu/sites/portal/files/documents/Guidelines%20for%20presentation%20of%20surveillance%20data-final-with-cover-for-we..._0.pdf
 #'
-#' @param col_scale Selected colour scale, defaults to 'green'. Select from 'green', 'blue', 'red', 'grey', 'qual(itative)' or 'hotcold'
-#' @param n Number of colours from each colour scale, apart from grey, in preferred order. Defaults to one colour, max 7-8 colours for each scale. To select
-#' grey shades, use the argument grey_shade instead.
-#' @param grey_shade Selected shade(s) of grey, use only for greyscale; overrides given number of colours (n).
+#' @param col_scale Selected colour scale, defaults to 'green'. Select from 'green', 'blue', 'red', 'grey', 'qual(itative)' or 'hot(cold)'
+#' @param n Number of colours from each colour scale, apart from grey, in preferred order. Defaults to one colour, apart from two colours for the hotcold scale, 
+#' max 7-8 colours for each scale. To select grey shades, use the argument grey_shade; to select number of hot (warm) colours, use the argument hot_cols
+#' @param grey_shade Only used with grey colours, defaults to medium. Selected shade(s) of grey in selected order; overrides given number of colours (n).
 #' @param hot_cols Selected number of hot (warm) colours in the hotcold colour scale, use only for hotcold; must be smaller than number of colours (n).
+#' Defaults to floored half of n of total hotcold colours.
 #' @author Tommi Karki
 #' @keywords colourscales
 #' @importFrom "grDevices" "rgb"
@@ -29,16 +30,11 @@
 #' 
 #' # Hot-cold colour scale
 #' barplot(c(1:4), col = SurvColors(col_scale = "hotcold", n = 4, hot_cols = 2))
-SurvColors <- function(col_scale = "green", n = NULL, grey_shade = c("light", 
-                                                      "mediumlight",
-                                                      "medium",
-                                                      "mediumdark",
-                                                      "dark"),
-                       hot_cols = 1){
-  if(is.null(n) & col_scale != "grey"){
-  n <- 1
-  }else{
-  n <- n
+SurvColors <- function(col_scale = "green", n = NULL, grey_shade = c("medium"),
+                       hot_cols = NULL){
+  
+  if(grepl("gray", col_scale)){
+    col_scale <- "grey"
   }
   
   if(grepl("qual", col_scale)){
@@ -47,6 +43,18 @@ SurvColors <- function(col_scale = "green", n = NULL, grey_shade = c("light",
   
   if(grepl("hot", col_scale)){
     col_scale <- "hotcold"
+  }
+  
+  if ((is.null(n) | n < 2) & col_scale == "hotcold"){
+    n <- 2
+    }else if(is.null(n) & col_scale != "grey"){
+    n <- 1
+  }else{
+    n <- n
+  }
+  
+  if(is.null(hot_cols)){
+    hot_cols <- floor(n/2)
   }
   
   if(!is.null(n)){
@@ -87,7 +95,9 @@ SurvColors <- function(col_scale = "green", n = NULL, grey_shade = c("light",
                rgb(201,217,113, maxColorValue = 255), 
                rgb(231,231,185, maxColorValue = 255))
   cols <- get(paste0("gscale", n))
-  }else if(col_scale=="blue"){  
+  }
+  
+  if(col_scale%in%c("blue", "hotcold")){  
 # blues
   bscale1 <- rgb(124,189,196, maxColorValue = 255)
   bscale2 <- c(rgb(60,142,162, maxColorValue = 255), 
@@ -117,8 +127,11 @@ SurvColors <- function(col_scale = "green", n = NULL, grey_shade = c("light",
                rgb(165,206,215, maxColorValue = 255), 
                rgb(194,218,232, maxColorValue = 255),
                rgb(227,232,240, maxColorValue = 255))
-  cols <- get(paste0("bscale", n))
-  }else if(col_scale=="red"){
+  if(col_scale=="blue"){
+  cols <- get(paste0("bscale", n))}
+  }
+  
+  if(col_scale%in%c("red", "hotcold")){
 # reds
   rscale1 <- rgb(168,45,23, maxColorValue = 255)
   rscale2 <- c(rgb(168,45,23, maxColorValue = 255), 
@@ -148,8 +161,11 @@ SurvColors <- function(col_scale = "green", n = NULL, grey_shade = c("light",
                rgb(220,150,53, maxColorValue = 255),
                rgb(233,184,85, maxColorValue = 255),
                rgb(241,214,118, maxColorValue = 255))
-  cols <- get(paste0("rscale", n))
-  }else if(col_scale == "grey"){
+  if(col_scale=="red"){
+  cols <- get(paste0("rscale", n))}
+  }
+  
+  if(col_scale == "grey"){
 # greyscale
     shades <- c("light", 
                      "mediumlight",
@@ -162,13 +178,16 @@ SurvColors <- function(col_scale = "green", n = NULL, grey_shade = c("light",
                  rgb(113,113,113, maxColorValue = 255),
                  rgb(63,63,63, maxColorValue = 255))
   cols <- cols[shades %in% grey_shade]
-  
+  shades <- shades[shades %in% grey_shade]
+  cols <- cols[order(match(shades, grey_shade))]
+ 
   if(is.null(n) & length(grey_shade) == 5){
     message("Greyzone -  If you want one or more specific grey shades, please insert the grey_shade(s): c('light', 'mediumlight','medium','mediumdark','dark')")
   }else if(!is.null(n)){
     message("Greyzone - number of colours (n) overridden by shades of grey. If you want one or more specific grey shades, please insert the grey_shade(s): c('light', 'mediumlight','medium','mediumdark','dark')")
   }
-}else if(col_scale=="qualitative"){
+}
+  if(col_scale=="qualitative"){
 # qualitative colours
   cols <- c(rgb(101,179,46, maxColorValue = 255),
                 rgb(124,189,196, maxColorValue = 255), 
@@ -179,72 +198,18 @@ SurvColors <- function(col_scale = "green", n = NULL, grey_shade = c("light",
                 rgb(232,104,63, maxColorValue = 255),
                 rgb(184,26,93, maxColorValue = 255))
   cols <- cols[1:n]
-}else if(col_scale=="hotcold"){
+}
+  if(col_scale=="hotcold"){
   if(n<=hot_cols){
     stop("Total number (n) of colours must be greater than n of hot colours (hot_cols)!")
   }
-  # reds
-  rscale1 <- rgb(168,45,23, maxColorValue = 255)
-  rscale2 <- c(rgb(168,45,23, maxColorValue = 255), 
-               rgb(225,167,68, maxColorValue = 255)) 
-  rscale3 <- c(rgb(168,45,23, maxColorValue = 255), 
-               rgb(204,107,33, maxColorValue = 255),
-               rgb(233,184,85, maxColorValue = 255)) 
-  rscale4 <- c(rgb(168,45,23, maxColorValue = 255),
-               rgb(195,74,23, maxColorValue = 255),
-               rgb(220,150,53, maxColorValue = 255),
-               rgb(233,184,85, maxColorValue = 255))
-  rscale5 <- c(rgb(124,23,15, maxColorValue = 255), 
-               rgb(182,61,23, maxColorValue = 255),
-               rgb(204,107,33, maxColorValue = 255), 
-               rgb(225,167,68, maxColorValue = 255),
-               rgb(241,214,118, maxColorValue = 255))
-  rscale6 <- c(rgb(124,23,15, maxColorValue = 255), 
-               rgb(174,52,23, maxColorValue = 255),
-               rgb(199,79,27, maxColorValue = 255),
-               rgb(214,133,43, maxColorValue = 255), 
-               rgb(230,176,77, maxColorValue = 255),
-               rgb(241,214,118, maxColorValue = 255))
-  rscale7 <- c(rgb(124,23,15, maxColorValue = 255),
-               rgb(168,45,23, maxColorValue = 255),
-               rgb(195,74,23, maxColorValue = 255),
-               rgb(204,107,33, maxColorValue = 255),
-               rgb(220,150,53, maxColorValue = 255),
-               rgb(233,184,85, maxColorValue = 255),
-               rgb(241,214,118, maxColorValue = 255))
-  bscale1 <- rgb(124,189,196, maxColorValue = 255)
-  bscale2 <- c(rgb(60,142,162, maxColorValue = 255), 
-               rgb(173,210,221, maxColorValue = 255)) 
-  bscale3 <- c(rgb(26,107,133, maxColorValue = 255), 
-               rgb(124,189,196, maxColorValue = 255),
-               rgb(194,218,232, maxColorValue = 255)) 
-  bscale4 <- c(rgb(26,107,133, maxColorValue = 255), 
-               rgb(73,153,171, maxColorValue = 255),
-               rgb(165,206,215, maxColorValue = 255), 
-               rgb(194,218,232, maxColorValue = 255))
-  bscale5 <- c(rgb(0,60,80, maxColorValue = 255), 
-               rgb(60,142,162, maxColorValue = 255),
-               rgb(124,189,196, maxColorValue = 255), 
-               rgb(173,210,221, maxColorValue = 255),
-               rgb(227,232,240, maxColorValue = 255))
-  bscale6 <- c(rgb(0,60,80, maxColorValue = 255), 
-               rgb(39,117,142, maxColorValue = 255),
-               rgb(95,167,181, maxColorValue = 255), 
-               rgb(147,199,207, maxColorValue = 255), 
-               rgb(187,216,229, maxColorValue = 255), 
-               rgb(227,232,240, maxColorValue = 255))
-  bscale7 <- c(rgb(0,60,80, maxColorValue = 255), 
-               rgb(26,107,133, maxColorValue = 255), 
-               rgb(73,153,171, maxColorValue = 255), 
-               rgb(124,189,196, maxColorValue = 255),
-               rgb(165,206,215, maxColorValue = 255), 
-               rgb(194,218,232, maxColorValue = 255),
-               rgb(227,232,240, maxColorValue = 255))
   cold_cols <- n-hot_cols
   cols <- get(paste0("rscale", hot_cols))
   cols <- c(cols, rev(get(paste0("bscale", cold_cols))))
   
-}else{
+}
+  
+  if(!col_scale%in%c("green", "blue", "red", "grey", "qualitative", "hotcold")){
   stop("col_scale is not among the currently defined colour palettes,
        please select from 'green', 'blue', 'red', 'grey', 'qual(itative)' or 'hot(cold)'")
 }
