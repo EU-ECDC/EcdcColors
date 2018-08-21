@@ -45,6 +45,10 @@ SurvColors <- function(col_scale = "green", n = NULL, grey_shade = c("light",
     col_scale <- "qualitative"
   }
   
+  if(grepl("hot", col_scale)){
+    col_scale <- "hotcold"
+  }
+  
   if(!is.null(n)){
   if(n>7 & col_scale != "qualitative"){
     stop("Maximum number of colours (n) for selected colour scale is 7!")
@@ -241,7 +245,8 @@ SurvColors <- function(col_scale = "green", n = NULL, grey_shade = c("light",
   cols <- c(cols, rev(get(paste0("bscale", cold_cols))))
   
 }else{
-  stop("col_scale is not among the currently defined colour palettes, please select from 'green', 'blue', 'red', 'grey' or 'qual(itative)'")
+  stop("col_scale is not among the currently defined colour palettes,
+       please select from 'green', 'blue', 'red', 'grey', 'qual(itative)' or 'hot(cold)'")
 }
   return(cols)
 }
