@@ -4,18 +4,19 @@
 \alias{SurvColors}
 \title{Colour palettes following the March 2018 ECDC guidelines for presentation of surveillance data}
 \usage{
-SurvColors(col_scale = "green", n = NULL, grey_shade = c("light",
-  "mediumlight", "medium", "mediumdark", "dark"), hot_cols = 1)
+SurvColors(col_scale = "green", n = NULL, grey_shade = NULL,
+  hot_cols = NULL)
 }
 \arguments{
-\item{col_scale}{Selected colour scale, defaults to 'green'. Select from 'green', 'blue', 'red', 'grey', 'qual(itative)' or 'hotcold'}
+\item{col_scale}{Selected colour scale, defaults to 'green'. Select from 'green', 'blue', 'red', 'grey', 'qual(itative)' or 'hot(cold)'}
 
-\item{n}{Number of colours from each colour scale, apart from grey, in preferred order. Defaults to one colour, max 7-8 colours for each scale. To select
-grey shades, use the argument grey_shade instead.}
+\item{n}{Number of colours from each colour scale, apart from grey, in order indicated in the guidelines. Defaults to one colour, apart from two colours for the hotcold scale, 
+max 7-8 colours for each scale. To select grey shades, use the argument grey_shade; to select number of hot (warm) colours in the hotcold scale, use the argument hot_cols.}
 
-\item{grey_shade}{Selected shade(s) of grey, use only for greyscale; overrides given number of colours (n).}
+\item{grey_shade}{Only used with grey colours, defaults to 'medium'. Selected shade(s) of grey in selected order; c('light', 'mediumlight','medium','mediumdark','dark'). Overrides given number of colours (n).}
 
-\item{hot_cols}{Selected number of hot (warm) colours in the hotcold colour scale, use only for hotcold; must be smaller than number of colours (n).}
+\item{hot_cols}{Selected number of hot (warm) colours in the hotcold colour scale, use only for hotcold. Must be smaller than the total number of colours (n).
+Defaults to floored half of total hotcold colours.}
 }
 \description{
 Full document: European Centre for Disease Prevention and Control. Guidelines for presentation of surveillance data.

@@ -4,11 +4,11 @@
 #' Stockholm: ECDC; 2018. Available from: https://ecdc.europa.eu/sites/portal/files/documents/Guidelines%20for%20presentation%20of%20surveillance%20data-final-with-cover-for-we..._0.pdf
 #'
 #' @param col_scale Selected colour scale, defaults to 'green'. Select from 'green', 'blue', 'red', 'grey', 'qual(itative)' or 'hot(cold)'
-#' @param n Number of colours from each colour scale, apart from grey, in preferred order. Defaults to one colour, apart from two colours for the hotcold scale, 
-#' max 7-8 colours for each scale. To select grey shades, use the argument grey_shade; to select number of hot (warm) colours, use the argument hot_cols
-#' @param grey_shade Only used with grey colours, defaults to medium. Selected shade(s) of grey in selected order; overrides given number of colours (n).
-#' @param hot_cols Selected number of hot (warm) colours in the hotcold colour scale, use only for hotcold; must be smaller than number of colours (n).
-#' Defaults to floored half of n of total hotcold colours.
+#' @param n Number of colours from each colour scale, apart from grey, in order indicated in the guidelines. Defaults to one colour, apart from two colours for the hotcold scale, 
+#' max 7-8 colours for each scale. To select grey shades, use the argument grey_shade; to select number of hot (warm) colours in the hotcold scale, use the argument hot_cols.
+#' @param grey_shade Only used with grey colours, defaults to 'medium'. Selected shade(s) of grey in selected order; c('light', 'mediumlight','medium','mediumdark','dark'). Overrides given number of colours (n).
+#' @param hot_cols Selected number of hot (warm) colours in the hotcold colour scale, use only for hotcold. Must be smaller than the total number of colours (n).
+#' Defaults to floored half of total hotcold colours.
 #' @author Tommi Karki
 #' @keywords colourscales
 #' @importFrom "grDevices" "rgb"
@@ -30,7 +30,7 @@
 #' 
 #' # Hot-cold colour scale
 #' barplot(c(1:4), col = SurvColors(col_scale = "hotcold", n = 4, hot_cols = 2))
-SurvColors <- function(col_scale = "green", n = NULL, grey_shade = c("medium"),
+SurvColors <- function(col_scale = "green", n = NULL, grey_shade = NULL,
                        hot_cols = NULL){
   
   if(grepl("gray", col_scale)){
@@ -45,12 +45,16 @@ SurvColors <- function(col_scale = "green", n = NULL, grey_shade = c("medium"),
     col_scale <- "hotcold"
   }
   
-  if ((is.null(n) | n < 2) & col_scale == "hotcold"){
+  if (is.null(n) & col_scale == "hotcold"){
     n <- 2
-    }else if(is.null(n) & col_scale != "grey"){
+  }else if(is.null(n)){
     n <- 1
   }else{
     n <- n
+  }
+  
+  if(n < 2 & col_scale == "hotcold"){
+    n <- 2
   }
   
   if(is.null(hot_cols)){
@@ -164,9 +168,13 @@ SurvColors <- function(col_scale = "green", n = NULL, grey_shade = c("medium"),
   if(col_scale=="red"){
   cols <- get(paste0("rscale", n))}
   }
-  
+
+# greyscale  
   if(col_scale == "grey"){
-# greyscale
+    if(is.null(grey_shade)){
+      message("Greyzone - number of colours defined by shades of grey, defaults to 'medium'. If you want specific grey shade(s) in specific order, please insert the grey_shade(s): c('light', 'mediumlight','medium','mediumdark','dark')")
+      grey_shade <- "medium"
+      }
     shades <- c("light", 
                      "mediumlight",
                      "medium",
@@ -181,12 +189,7 @@ SurvColors <- function(col_scale = "green", n = NULL, grey_shade = c("medium"),
   shades <- shades[shades %in% grey_shade]
   cols <- cols[order(match(shades, grey_shade))]
  
-  if(is.null(n) & length(grey_shade) == 5){
-    message("Greyzone -  If you want one or more specific grey shades, please insert the grey_shade(s): c('light', 'mediumlight','medium','mediumdark','dark')")
-  }else if(!is.null(n)){
-    message("Greyzone - number of colours (n) overridden by shades of grey. If you want one or more specific grey shades, please insert the grey_shade(s): c('light', 'mediumlight','medium','mediumdark','dark')")
   }
-}
   if(col_scale=="qualitative"){
 # qualitative colours
   cols <- c(rgb(101,179,46, maxColorValue = 255),
