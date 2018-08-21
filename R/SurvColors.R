@@ -1,4 +1,7 @@
-#' Colour palettes following the latest March 2018 surveillance guidelines
+#' Colour palettes following the March 2018 ECDC guidelines for presentation of surveillance data
+#'
+#' Full document: European Centre for Disease Prevention and Control. Guidelines for presentation of surveillance data.
+#' Stockholm: ECDC; 2018. Available from: https://ecdc.europa.eu/sites/portal/files/documents/Guidelines%20for%20presentation%20of%20surveillance%20data-final-with-cover-for-we..._0.pdf
 #'
 #' @param col_scale Selected colour scale, defaults to 'green'. Select from 'green', 'blue', 'red', 'grey', 'qual(itative)' or 'hotcold'
 #' @param n Number of colours from each colour scale, apart from grey, in preferred order. Defaults to one colour, max 7-8 colours for each scale. To select
