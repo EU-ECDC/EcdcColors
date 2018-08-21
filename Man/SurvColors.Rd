@@ -2,7 +2,7 @@
 % Please edit documentation in R/SurvColors.R
 \name{SurvColors}
 \alias{SurvColors}
-\title{Colour palettes following the latest March 2018 surveillance guidelines}
+\title{Colour palettes following the March 2018 ECDC guidelines for presentation of surveillance data}
 \usage{
 SurvColors(col_scale = "green", n = NULL, grey_shade = c("light",
   "mediumlight", "medium", "mediumdark", "dark"), hot_cols = 1)
@@ -18,7 +18,8 @@ grey shades, use the argument grey_shade instead.}
 \item{hot_cols}{Selected number of hot (warm) colours in the hotcold colour scale, use only for hotcold; must be smaller than number of colours (n).}
 }
 \description{
-Colour palettes following the latest March 2018 surveillance guidelines
+Full document: European Centre for Disease Prevention and Control. Guidelines for presentation of surveillance data.
+Stockholm: ECDC; 2018. Available from: https://ecdc.europa.eu/sites/portal/files/documents/Guidelines%20for%20presentation%20of%20surveillance%20data-final-with-cover-for-we..._0.pdf
 }
 \examples{
 # Select three first green colours
