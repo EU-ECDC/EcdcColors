@@ -1,4 +1,4 @@
-# SurvColors
+# ECDCColors
 Colour palettes following March 2018 ECDC guidelines for presentation of surveillance data. Contains green, blue, red and grey scales, and qualitative colours, as well as hotcold (warm-cold) scale. Function returns a vector of colours with defined length, which can be used directly in plots.
 
 The choice of a colour palette is important as it has a strong impact on the perception of your data by the reader.
