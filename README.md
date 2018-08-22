@@ -25,4 +25,4 @@ The colours implemented in SurvColors fit ECDC’s requirements but are also val
 is also possible to adapt these colours to suit different needs. 
 
 Citation:  European Centre for Disease Prevention and Control. Guidelines for presentation of surveillance
-data. Stockholm: ECDC; 2018. Available from: https://ecdc.europa.eu/sites/portal/files/documents/Guidelines%20for%20presentation%20of%20surveillance%20data-final-with-cover-for-we..._0.pdf
+data. Stockholm: ECDC; 2018. Available from: https://ecdc.europa.eu/en/publications-data/guidelines-presentation-surveillance-data
