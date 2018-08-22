@@ -15,26 +15,26 @@
 #' @export
 #' @examples
 #' # Select three first green colours
-#' SurvCols("green", n=3)
+#' EcdcColors("green", n=3)
 #' 
 #' # Select two first qualitative colours
-#' SurvCols("qual", n=2)
+#' EcdcColors("qual", n=2)
 #' 
 #' # Select seven red colours
-#' SurvCols("red", n=7)
+#' EcdcColors("red", n=7)
 #' 
-#' SurvCols("grey", grey_shade = c("mediumlight", "dark"))
+#' EcdcColors("grey", grey_shade = c("mediumlight", "dark"))
 #' 
 #' # Use in a graph
 #' # Dummy data
 #' mydat <- data.frame(ID = c(seq(1,10,1)),
 #' Gender = c(rep(c("F", "M"),5)))
-#' barplot(table(mydat$Gender), col = SurvCols(col_scale = "qual", n=2))
+#' barplot(table(mydat$Gender), col = EcdcColors(col_scale = "qual", n=2))
 #' 
 #' # Hot-cold colour scale
-#' barplot(c(1:4), col = SurvCols(col_scale = "hotcold", n = 4, hot_cols = 2))
-SurvCols <- function(col_scale = "green", n = NULL, grey_shade = NULL,
-                       hot_cols = NULL){
+#' barplot(c(1:4), col = EcdcColors(col_scale = "hotcold", n = 4, hot_cols = 2))
+EcdcColors <- function(col_scale = "green", n = NULL, grey_shade = NULL,
+                     hot_cols = NULL){
   
   return(SurvColors(col_scale = col_scale, n = n, grey_shade = grey_shade,
                     hot_cols = hot_cols))
