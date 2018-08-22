@@ -20,6 +20,9 @@
 #' # Select two first qualitative colours
 #' SurvCols("qual", n=2)
 #' 
+#' # Select seven red colours
+#' SurvCols("red", n=7)
+#' 
 #' SurvCols("grey", grey_shade = c("mediumlight", "dark"))
 #' 
 #' # Use in a graph
