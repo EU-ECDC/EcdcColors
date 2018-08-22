@@ -1,8 +1,8 @@
-Package: SurvColors
+Package: EcdcColors
 Title: Surveillance colors according to March 2018 ECDC guidelines for presentation of surveillance data
 Version: 0.0.0.9000
 Authors@R: person("Tommi", "Karki", email = "tommi.karki@ecdc.europa.eu", role = c("aut", "cre"))
-Description: Surveillance colour palettes following March 2018 guidelines. Currently contains green, blue, red and grey scales, and qualitative colours. Function returns a vector of colours with defined length, which can be used directly in plots.
+Description: Surveillance colour palettes following March 2018 guidelines. Currently contains green, blue, red and grey scales, qualitative and hot-cold colours. Function returns a vector of colours with defined length, which can be used directly in plots.
 Depends: R (>= 3.4.0)
 License: GPL (>= 2)
 Encoding: UTF-8
