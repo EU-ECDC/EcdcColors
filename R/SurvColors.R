@@ -65,9 +65,9 @@ SurvColors <- function(col_scale = "green", n = NULL, grey_shade = NULL,
   }
   
   if(!is.null(n)){
-  if(n>7 & col_scale != "qualitative"){
+  if(n>7 & !col_scale %in% c("qualitative", "hotcold")){
     stop("Maximum number of colours (n) for selected colour scale is 7!")
-  }else if(n>8 & col_scale == "qualitative"){
+  }else if(n>8 & col_scale %in% c("qualitative", "hotcold")){
     stop("Maximum number of colours (n) for selected colour scale is 8!")
   }}
   
