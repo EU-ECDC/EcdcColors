@@ -1,5 +1,5 @@
-# ECDCColors
-Colour palettes following March 2018 ECDC guidelines for presentation of surveillance data. Contains green, blue, red and grey scales, and qualitative colours, as well as hotcold (warm-cold) scale. Function returns a vector of colours with defined length, which can be used directly in plots.
+# EcdcColors
+Development of an R package for colour palettes following March 2018 ECDC guidelines for presentation of surveillance data. Contains green, blue, red and grey scales, and qualitative colours, as well as hotcold (warm-cold) scale. Function returns a vector of colours with defined length, which can be used directly in plots.
 
 The choice of a colour palette is important as it has a strong impact on the perception of your data by the reader.
 The perception will be different depending on whether an area is depicted in red or in green, and this in turn will
