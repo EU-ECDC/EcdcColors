@@ -6,7 +6,7 @@ The perception will be different depending on whether an area is depicted in red
 result in an initial positive or negative perception of your data. It seems obvious but common mistakes are often
 made. Therefore, the palette used should be chosen carefully depending on the message to be conveyed.
 
-The colour palette implemented in SurvColors will help you to create clean, readable and consistent graphs and maps. A palette
+The colour palette implemented in EcdcColors will help you to create clean, readable and consistent graphs and maps. A palette
 usually consists of a maximum of seven steps as the human eye is not able to distinguish between many shades of
 the same colour. Limiting the number of steps is also a good way to make your graphs and maps clear for the reader.
 To ensure optimal readability, use the different colours according to the number of steps in your scale.
@@ -21,7 +21,7 @@ the basic rules and standard practices for data visualisation, being easily unde
 accessibility to those who are colour-blind, being compatible with the ECDC corporate identity and being pleasing
 to the eye.
 
-The colours implemented in SurvColors fit ECDC’s requirements but are also valid for any other organisation and can be used widely. It
+The colours implemented in EcdcColors fit ECDC’s requirements but are also valid for any other organisation and can be used widely. It
 is also possible to adapt these colours to suit different needs. 
 
 Citation:  European Centre for Disease Prevention and Control. Guidelines for presentation of surveillance
