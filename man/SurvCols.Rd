@@ -20,7 +20,7 @@ Defaults to floored half of total hotcold colours.}
 }
 \description{
 Full document: European Centre for Disease Prevention and Control. Guidelines for presentation of surveillance data.
-Stockholm: ECDC; 2018. Available from: https://ecdc.europa.eu/sites/portal/files/documents/Guidelines%20for%20presentation%20of%20surveillance%20data-final-with-cover-for-we..._0.pdf
+Stockholm: ECDC; 2018. Available from: \href{https://ecdc.europa.eu/en/publications-data/guidelines-presentation-surveillance-data}{Guidelines for presentation of surveillance data}
 }
 \examples{
 # Select three first green colours
@@ -28,6 +28,9 @@ SurvCols("green", n=3)
 
 # Select two first qualitative colours
 SurvCols("qual", n=2)
+
+# Select seven red colours
+SurvCols("red", n=7)
 
 SurvCols("grey", grey_shade = c("mediumlight", "dark"))
 
