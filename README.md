@@ -26,3 +26,5 @@ is also possible to adapt these colours to suit different needs.
 
 Citation:  European Centre for Disease Prevention and Control. Guidelines for presentation of surveillance
 data. Stockholm: ECDC; 2018. Available from: https://ecdc.europa.eu/en/publications-data/guidelines-presentation-surveillance-data
+
+Contains two functions, EcdcColors() and SurvColors(), both implementing the exact same colourscale.  
