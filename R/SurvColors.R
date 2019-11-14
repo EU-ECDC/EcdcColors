@@ -193,3 +193,9 @@ SurvColors <- function(col_scale = "green", n = NULL, grey_shade = NULL,
   }
   return(cols)
 }
+
+#' @author Tommi Karki
+#' @export
+#' @rdname SurvColors
+#' @usage NULL
+SurvColours <- SurvColors
