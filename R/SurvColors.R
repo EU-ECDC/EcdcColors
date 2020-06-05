@@ -105,7 +105,7 @@ SurvColors <- function(col_scale = "green", n = NULL, grey_shade = NULL,
               rgb(227,232,240, maxColorValue = 255))
   }
   
-  if(col_scale %in% c("blue", "green"){
+  if(col_scale %in% c("blue", "green")){
     scale1 <- opts[7]
     scale2 <- opts[c(4, 11)]
     scale3 <- opts[c(2, 7, 12)]
